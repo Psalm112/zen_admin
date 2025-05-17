@@ -1,45 +1,67 @@
 
-
 import { memo } from "react";
 import { NavLink } from "react-router-dom";
-import { AiOutlineHome } from "react-icons/ai";
-import { BiPackage } from "react-icons/bi";
-import { IoSwapHorizontalOutline } from "react-icons/io5";
-import { BsPeople } from "react-icons/bs";
-import { RiUser3Line } from "react-icons/ri";
-import { IoChatbubbleOutline } from "react-icons/io5";
+import { motion } from "framer-motion";
+import { GrHomeRounded } from "react-icons/gr";
+import { CgController } from "react-icons/cg";
+import { PiTruck } from "react-icons/pi";
+import { TbUserExclamation } from "react-icons/tb";
+import { IoCashOutline } from "react-icons/io5";
 
 const navItems = [
-  { icon: <AiOutlineHome size={22} />, label: "Home", path: "/" },
-  { icon: <BiPackage size={22} />, label: "Product", path: "/product" },
-  {
-    icon: <IoSwapHorizontalOutline size={22} />,
-    label: "Trade",
-    path: "/trades",
+  { icon: <GrHomeRounded size={18} />, label: "Dashboard", path: "/" },
+  { 
+    icon: <TbUserExclamation size={18} />,
+    label: "Disputes", 
+    path: "/disputes" 
   },
-  { icon: <BsPeople size={22} />, label: "Community", path: "/community" },
-  { icon: <RiUser3Line size={22} />, label: "Account", path: "/account" },
+  { 
+    icon: <CgController size={20} />, 
+    label: "Vendor", 
+    path: "/vendor-control" 
+  },
+  { 
+    icon: <IoCashOutline size={20} />, 
+    label: "Payments", 
+    path: "/payments" 
+  },
+  { 
+    icon: <PiTruck size={20} />, 
+    label: "Logistics", 
+    path: "/logistics" 
+  },
 ];
 
 const MobileNavigation = () => {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-[#212428] flex justify-evenly items-center px-2 py-1.5 sm:hidden z-50 border-t border-[#292B30]">
+    <motion.nav 
+      className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-[#292B30] flex justify-evenly items-center px-4 py-2 rounded-full md:hidden z-50 shadow-lg"
+      initial={{ y: 100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+    >
       {navItems.map((item) => (
-          <NavLink
-            key={item.path}
-            to={item.path}
-            className={({ isActive }) => `
-              relative flex flex-col items-center text-xs p-1.5
-              ${isActive ? "text-Red" : "text-[#545456]"}
-            `}
-            aria-label={item.label}
+        <NavLink
+          key={item.path}
+          to={item.path}
+          className={({ isActive }) => `
+            relative text-xs p-2 mx-1
+            ${isActive ? "text-Red" : "text-[#545456]"}
+          `}
+          aria-label={item.label}
+        >
+          <motion.div
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            className="flex flex-col items-center"
           >
-            {item.icon}
-            <span className="mt-0.5 text-[10px]">{item.label}</span>
-          </NavLink>
-        )
-      )}
-    </nav>
+            <span>{item.icon}</span>
+            <span className="mt-1 text-[10px] font-medium">{item.label}</span>
+          </motion.div>
+        </NavLink>
+      ))}
+    </motion.nav>
   );
 };
 
