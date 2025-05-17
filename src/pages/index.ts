@@ -6,6 +6,8 @@ import BlackLogo from "/images/logoBlack.png";
 // import Mainlogo from "/images/mainlogo.png"
 import Avatar from "/images/avatar.png";
 import Avatar2 from "/images/avatar2.png";
+import disputeIcon from "/images/disputes-icon.svg"
+import paymentsIcon from "/images/payments-icon.svg"
 // import Browseproduct from "/images/bp.png";
 // import Trackorder from "/images/to.png";
 // import Mywallet from "/images/mw.png";
@@ -28,6 +30,8 @@ export {
   BlackLogo,
   Avatar,
   Avatar2,
+  disputeIcon,
+  paymentsIcon
   // Browseproduct,
   // Trackorder,
   // Mywallet,

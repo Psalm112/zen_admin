@@ -14,8 +14,6 @@ import { store } from "./store/store.ts";
 import ErrorBoundary from "./components/error/ErrorBoundary.tsx";
 import { setupGlobalErrorHandling } from "./utils/errorHandling";
 import { CurrencyProvider } from "./context/CurrencyContext.tsx";
-
-
 const Login = lazy(() => import("./pages/Login.tsx"));
 const Dashboard = lazy(() => import("./pages/Dashboard.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
@@ -91,3 +89,4 @@ createRoot(document.getElementById("root")!).render(
     <RouterProvider router={router} />
   </StrictMode>
 );
+

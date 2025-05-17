@@ -7,6 +7,7 @@ import ProfitChart from "../components/dashboard/ProfitChart";
 import SessionsChart from "../components/dashboard/SessionsChart";
 import RecentOrders from "../components/dashboard/RecentOrders";
 import TopProducts from "../components/dashboard/TopProducts";
+import Container from "../components/common/Container";
 
 // Icons for stats cards
 const HeartIcon = () => (
@@ -51,12 +52,13 @@ const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
   
   return (
-    <div className="px-4 lg:px-6 py-6 bg-[#17181C] min-h-screen">
+    <div className="px-4 lg:px-6 py-6 bg-Dark min-h-screen">
+        <Container>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="max-w-[1400px] mx-auto"
+        className="w-full"
       >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
           <div>
@@ -159,6 +161,7 @@ const Dashboard = () => {
           <TopProducts />
         </div>
       </motion.div>
+      </Container>
     </div>
   );
 };
