@@ -1,13 +1,12 @@
-// src/pages/admin/Dashboard.tsx
+
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Container from "../../components/common/Container";
-import StatsCard from "../../components/admin/StatsCard";
-import RevenueChart from "../../components/admin/RevenueChart";
-import ProfitChart from "../../components/admin/ProfitChart";
-import SessionsChart from "../../components/admin/SessionsChart";
-import RecentOrders from "../../components/admin/RecentOrders";
-import TopProducts from "../../components/admin/TopProducts";
+import StatsCard from "../components/dashboard/StatsCard";
+import RevenueChart from "../components/dashboard/RevenueChart";
+import ProfitChart from "../components/dashboard/ProfitChart";
+import SessionsChart from "../components/dashboard/SessionsChart";
+import RecentOrders from "../components/dashboard/RecentOrders";
+import TopProducts from "../components/dashboard/TopProducts";
 
 // Icons for stats cards
 const HeartIcon = () => (
@@ -48,15 +47,16 @@ const VendorsIcon = () => (
   </div>
 );
 
-const AdminDashboard = () => {
+const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
   
   return (
-    <Container className="py-6">
+    <div className="px-4 lg:px-6 py-6 bg-[#17181C] min-h-screen">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
+        className="max-w-[1400px] mx-auto"
       >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
           <div>
@@ -126,4 +126,41 @@ const AdminDashboard = () => {
             value="23.6K" 
             change={-12.8} 
           />
-          <Stats
+          <StatsCard 
+            icon={<OrdersIcon />} 
+            title="Total Number Of Orders" 
+            value="756" 
+            change={2.1} 
+          />
+          <StatsCard 
+            icon={<VendorsIcon />} 
+            title="Active Vendors" 
+            value="30" 
+            change={11.3} 
+          />
+        </div>
+        
+        {/* Charts Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+          <div className="lg:col-span-2">
+            <RevenueChart />
+          </div>
+          <div className="lg:col-span-1">
+            <ProfitChart />
+            <div className="mt-6">
+              <SessionsChart />
+            </div>
+          </div>
+        </div>
+        
+        {/* Tables Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <RecentOrders />
+          <TopProducts />
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+export default Dashboard;

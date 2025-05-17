@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { LineChart, Line, XAxis, ResponsiveContainer } from "recharts";
 

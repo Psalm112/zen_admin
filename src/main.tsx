@@ -17,6 +17,7 @@ import { CurrencyProvider } from "./context/CurrencyContext.tsx";
 
 
 const Login = lazy(() => import("./pages/Login.tsx"));
+const Dashboard = lazy(() => import("./pages/Dashboard.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 setupGlobalErrorHandling();
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: ,
+        element: <Dashboard/> ,
       },
       {
         path: "/login",
