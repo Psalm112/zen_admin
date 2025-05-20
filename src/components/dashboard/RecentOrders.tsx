@@ -158,8 +158,8 @@ const RecentOrders = () => {
       </div>
 
       <div className="overflow-x-auto max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-[#333] scrollbar-track-[#1e2024]">
-        <table className="w-full">
-          <thead className="sticky top-0 bg-[#1e2024] z-10">
+        <table className="w-full max-md:border-separate max-md:border-spacing-2">
+          <thead className="sticky top-0 bg-[#1e2024] z-10 ">
             <tr className="text-left text-white text-xs border-b border-[#292B30]">
               <th className="pb-2">
                 <div className="flex items-center gap-2">
@@ -169,7 +169,7 @@ const RecentOrders = () => {
                       checked={selectAll}
                       onChange={handleSelectAll}
                       className="peer absolute h-4 w-4 appearance-none rounded-sm bg-[#292B30] border border-[#AEB9E1] checked:bg-[#FF343F] checked:border-[#FF343F] focus:ring-[#FF343F] cursor-pointer"
-                        />
+                    />
                     <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-white text-xs peer-checked:opacity-100 opacity-0">
                       -
                     </span>
@@ -178,20 +178,25 @@ const RecentOrders = () => {
                 </div>
               </th>
               <th>
-              <div className="pb-2 flex gap-1 items-center">
-                <PiCalendarBlankFill size={20} className="text-[#AEB9E1]" />
-                <span>Date</span>
+                <div className="pb-2 flex gap-1 items-center">
+                  <PiCalendarBlankFill
+                    size={20}
+                    className="text-[#AEB9E1] max-md:hidden"
+                  />
+                  <span>Date</span>
                 </div>
               </th>
               <th>
-              <div className="pb-2 flex gap-1 items-center">
-                <IoIosCheckbox size={20} className="text-[#AEB9E1]" />
-                <span>Status</span>
-              </div>
+                <div className="pb-2 flex gap-1 items-center">
+                  <IoIosCheckbox
+                    size={20}
+                    className="text-[#AEB9E1] max-md:hidden"
+                  />
+                  <span>Status</span>
+                </div>
               </th>
               <th className="pb-2 text-right">Total</th>
             </tr>
-            
           </thead>
           <tbody>
             {orders.map((order) => (

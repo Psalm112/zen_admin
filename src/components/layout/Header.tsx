@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, } from "framer-motion";
+import { motion } from "framer-motion";
 import Container from "../common/Container";
-import { Avatar, Logo, } from "../../pages";
+import { Avatar, Logo } from "../../pages";
 import { IoCashOutline, IoChevronDown } from "react-icons/io5";
 import { GrHomeRounded } from "react-icons/gr";
 import { CgController } from "react-icons/cg";
@@ -18,11 +17,31 @@ const Header = () => {
 
   // Navigation links
   const navLinks = [
-    { label: "Dashboard", path: "/", icon: <GrHomeRounded className="text-lg  max-lg:hidden" /> },
-    { label: "Disputes", path: "/disputes", icon: <TbUserExclamation size={18} />},
-    { label: "Vendor Control", path: "/vendor-control", icon: <CgController className="text-xl max-lg:hidden" /> },
-    { label: "Payments", path: "/payments", icon: <IoCashOutline size={20} /> },
-    { label: "Logistics", path: "/logistics", icon: <PiTruck className="text-xl max-lg:hidden" /> },
+    {
+      label: "Dashboard",
+      path: "/",
+      icon: <GrHomeRounded className="text-lg  max-lg:hidden" />,
+    },
+    {
+      label: "Disputes",
+      path: "/disputes",
+      icon: <TbUserExclamation size={18} className="text-xl max-lg:hidden" />,
+    },
+    {
+      label: "Vendor Control",
+      path: "/vendor-control",
+      icon: <CgController className="text-xl max-lg:hidden" />,
+    },
+    {
+      label: "Payments",
+      path: "/payments",
+      icon: <IoCashOutline size={20} className="text-xl max-lg:hidden" />,
+    },
+    {
+      label: "Logistics",
+      path: "/logistics",
+      icon: <PiTruck className="text-xl max-lg:hidden" />,
+    },
   ];
 
   const isActive = (path: string) => {
@@ -32,12 +51,8 @@ const Header = () => {
   return (
     <header className="w-full py-2 md:py-4 bg-[#171A1E] shadow-md sticky top-0 z-50">
       <Container className="py-0 flex items-center justify-between">
-        <Link 
-          to="/" 
-          className="flex items-center"
-          aria-label="Go to homepage"
-        >
-          <motion.div 
+        <Link to="/" className="flex items-center" aria-label="Go to homepage">
+          <motion.div
             className="w-8 h-8 md:w-9 md:h-9 relative overflow-hidden"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -67,13 +82,14 @@ const Header = () => {
                   }`}
                   aria-current={isActive(link.path) ? "page" : undefined}
                 >
-                  <span className="flex items-center justify-center">{link.icon}</span>
+                  <span className="flex items-center justify-center">
+                    {link.icon}
+                  </span>
                   <span className="ml-2">{link.label}</span>
                 </Link>
               </motion.div>
             ))}
           </nav>
-
 
           <div className="flex items-center space-x-4">
             <motion.button
@@ -84,10 +100,13 @@ const Header = () => {
               whileTap={{ scale: 0.9 }}
             >
               <IoNotificationsOutline size={20} />
-              <span className="absolute top-1 right-1 block h-2 w-2 rounded-full bg-Red" aria-label="New notifications available"></span>
+              <span
+                className="absolute top-1 right-1 block h-2 w-2 rounded-full bg-Red"
+                aria-label="New notifications available"
+              ></span>
             </motion.button>
 
-            <motion.div 
+            <motion.div
               className="flex items-center gap-3 cursor-pointer"
               whileHover={{ scale: 1.03 }}
             >

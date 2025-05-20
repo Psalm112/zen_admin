@@ -7,7 +7,7 @@ import Layout from "./components/layout/Layout.tsx";
 import Loadscreen from "./pages/Loadscreen.tsx";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import AuthCallback from "./pages/AuthCallback.tsx";
-import ProtectedRoute from "./components/auth/ProtectedRoute.tsx";
+// import ProtectedRoute from "./components/auth/ProtectedRoute.tsx";
 import { SnackbarProvider } from "./context/SnackbarContext.tsx";
 import { Provider } from "react-redux";
 import { store } from "./store/store.ts";
@@ -17,6 +17,7 @@ import { CurrencyProvider } from "./context/CurrencyContext.tsx";
 const Login = lazy(() => import("./pages/Login.tsx"));
 const Dashboard = lazy(() => import("./pages/Dashboard.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
+const Payments = lazy(() => import("./pages/Payments.tsx"));
 
 setupGlobalErrorHandling();
 
@@ -24,17 +25,17 @@ const RouterLayout = () => {
   return (
     <Configuration>
       <Provider store={store}>
-          <AuthProvider>
-            <SnackbarProvider>
-              <CurrencyProvider>
-                <Layout>
-                  <Suspense fallback={<Loadscreen />}>
-                    <Outlet />
-                  </Suspense>
-                </Layout>
-              </CurrencyProvider>
-            </SnackbarProvider>
-          </AuthProvider>
+        <AuthProvider>
+          <SnackbarProvider>
+            <CurrencyProvider>
+              <Layout>
+                <Suspense fallback={<Loadscreen />}>
+                  <Outlet />
+                </Suspense>
+              </Layout>
+            </CurrencyProvider>
+          </SnackbarProvider>
+        </AuthProvider>
       </Provider>
     </Configuration>
   );
@@ -52,10 +53,6 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        index: true,
-        element: <Dashboard/> ,
-      },
-      {
         path: "/login",
         element: <Login />,
       },
@@ -63,14 +60,20 @@ const router = createBrowserRouter([
         path: "/auth/google",
         element: <AuthCallback />,
       },
+      // {
+      //   element: <ProtectedRoute />,
+      //   children: [
       {
-        element: <ProtectedRoute />,
-        children: [
-          
-        ],
+        index: true,
+        element: <Dashboard />,
       },
+      {
+        path: "/payments",
+        element: <Payments />,
+      },
+      //   ],
+      // },
 
-      
       {
         path: "/load",
         element: <Loadscreen />,
@@ -89,4 +92,3 @@ createRoot(document.getElementById("root")!).render(
     <RouterProvider router={router} />
   </StrictMode>
 );
-
