@@ -13,7 +13,7 @@ interface FallbackErrorProps {
 const FallbackError = memo(({ resetErrorBoundary }: FallbackErrorProps) => {
   const navigate = useNavigate();
   return (
-    <div className="bg-Dark min-h-screen flex items-center justify-center">
+    <div className="bg-[#171A1E] min-h-screen flex items-center justify-center">
       <Container className="py-10 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

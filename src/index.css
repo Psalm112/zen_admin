@@ -40,9 +40,28 @@
       100% { transform: translateX(0); opacity: 1 }  
   }
 }
-/* @tailwind base; */
-/* @tailwind components;
-@tailwind utilities; */
+
+
+
+:root {
+  --background: #171A1E;
+  --card-bg: #1e2024;
+  --card-border: #292B30;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --accent: #FF343F;
+  --accent-secondary: #39ACFF;
+}
+
+html, body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
@@ -62,6 +81,23 @@
 }
 
 /* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--card-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3d42;
+}
 .scrollbar-thin::-webkit-scrollbar {
   width: 4px;
 }
@@ -78,18 +114,30 @@
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background-color: #545456;
 }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+
 
 /* For Firefox */
 .scrollbar-thin {
   scrollbar-width: thin;
   scrollbar-color: #3A3D42 transparent;
 }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--card-border) var(--card-bg);
+}
 
 @layer base {
   body {
-    @apply bg-Dark text-white;
+    @apply bg-[#171A1E] text-white;
   }
 }
+
+
 
 @layer components {
   .btn-primary {
@@ -103,6 +151,35 @@
   .input-primary {
     @apply bg-[#292B30] text-white border-none outline-none px-4 py-3 w-full focus:ring-1 focus:ring-Red;
   }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-thumb-rounded {
+    scrollbar-color: var(--card-border) var(--card-bg);
+  }
+}
+
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.skip-to-content:focus {
+  left: 0;
+  width: auto;
+  height: auto;
+  padding: 1rem;
+  background: var(--card-bg);
+  border: 2px solid var(--accent);
 }
 @use "./everything" as *;
 

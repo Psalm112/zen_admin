@@ -53,7 +53,7 @@ const Login: React.FC<LoginProps> = ({ isFromReferral = false }) => {
   };
 
   return (
-    <div className="bg-Dark flex justify-center items-center py-10 min-h-screen">
+    <div className="bg-[#171A1E] flex justify-center items-center py-10 min-h-screen">
       <div className="flex flex-col items-center w-full max-w-md px-6 md:px-10">
         <div className="flex flex-col gap-8">
           <img

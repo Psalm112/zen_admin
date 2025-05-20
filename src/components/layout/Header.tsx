@@ -1,15 +1,15 @@
-// src/components/layout/Header.tsx
+
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, } from "framer-motion";
 import Container from "../common/Container";
-import { Avatar, disputeIcon, Logo, paymentsIcon } from "../../pages";
+import { Avatar, Logo, } from "../../pages";
 import { IoCashOutline, IoChevronDown } from "react-icons/io5";
 import { GrHomeRounded } from "react-icons/gr";
 import { CgController } from "react-icons/cg";
 import { PiTruck } from "react-icons/pi";
 import { IoNotificationsOutline } from "react-icons/io5";
-import { HiMenu } from "react-icons/hi";
+// import { HiMenu } from "react-icons/hi";
 import { TbUserExclamation } from "react-icons/tb";
 
 const Header = () => {
@@ -30,7 +30,7 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full py-2 md:py-4 bg-Dark shadow-md sticky top-0 z-50">
+    <header className="w-full py-2 md:py-4 bg-[#171A1E] shadow-md sticky top-0 z-50">
       <Container className="py-0 flex items-center justify-between">
         <Link 
           to="/" 
@@ -50,7 +50,7 @@ const Header = () => {
           </motion.div>
         </Link>
 
-        <div className="flex items-center rounded-full gap-2 bg-[#292B30] pl-1 py-1 pr-3">
+        <div className="flex items-center rounded-full gap-2 bg-[#212428] pl-1 py-1 pr-3">
           <nav className="hidden md:flex items-center space-x-1 border-r border-r-[1px] border-gray-400 pr-4 mr-2">
             {navLinks.map((link) => (
               <motion.div

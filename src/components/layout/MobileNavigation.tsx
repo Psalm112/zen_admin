@@ -57,7 +57,7 @@ const MobileNavigation = () => {
             className="flex flex-col items-center"
           >
             <span>{item.icon}</span>
-            <span className="mt-1 text-[10px] font-medium">{item.label}</span>
+            <span className="mt-1 text-[10px] font-medium max-xs:hidden">{item.label}</span>
           </motion.div>
         </NavLink>
       ))}

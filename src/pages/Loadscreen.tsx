@@ -12,7 +12,7 @@ const Loadscreen = () => {
   }, [navigate]);
 
   return (
-    <div className="w-full h-screen bg-Dark flex flex-col items-center justify-center">
+    <div className="w-full h-screen bg-[#171A1E] flex flex-col items-center justify-center">
       <div className="animate-pulse">
         <img src={Logo} alt="Dezennmart Logo" className="w-32 h-32" />
       </div>

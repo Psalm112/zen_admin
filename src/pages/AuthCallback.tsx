@@ -61,7 +61,7 @@ const AuthCallback = () => {
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen bg-Dark">
+      <div className="flex flex-col items-center justify-center h-screen bg-[#171A1E]">
         <div className="bg-[#292B30] p-8 rounded-lg shadow-lg max-w-md w-full">
           <h2 className="text-Red text-2xl font-bold mb-4">
             Authentication Error
