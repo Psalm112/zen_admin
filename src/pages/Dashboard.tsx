@@ -66,7 +66,7 @@ const Dashboard = () => {
               className="w-full"
             >
               <Title
-                text="Dashboard"
+                title="Dashboard"
                 description="An overview of recent data of customers info, products details analysis"
                 handleExportCSV={handleExportCSV}
                 handleDownloadReport={handleDownloadReport}

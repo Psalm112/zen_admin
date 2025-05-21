@@ -18,6 +18,8 @@ const Login = lazy(() => import("./pages/Login.tsx"));
 const Dashboard = lazy(() => import("./pages/Dashboard.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const Payments = lazy(() => import("./pages/Payments.tsx"));
+const Disputes = lazy(() => import("./pages/Disputes.tsx"));
+const VendorControl = lazy(() => import("./pages/VendorControl.tsx"));
 
 setupGlobalErrorHandling();
 
@@ -70,6 +72,14 @@ const router = createBrowserRouter([
       {
         path: "/payments",
         element: <Payments />,
+      },
+      {
+        path: "/disputes",
+        element: <Disputes />,
+      },
+      {
+        path: "/vendor-control",
+        element: <VendorControl />,
       },
       //   ],
       // },

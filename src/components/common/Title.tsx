@@ -4,16 +4,18 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 interface Props {
-  text: string;
+  title: string;
   description?: string;
   //   className?: string;
+  onSearch?: (query: string) => void;
   handleExportCSV?: () => void;
   handleDownloadReport?: () => void;
 }
 
 const Title = ({
-  text,
+  title,
   description,
+  onSearch,
   //   className,
   handleExportCSV,
   handleDownloadReport,
@@ -23,7 +25,7 @@ const Title = ({
   return (
     <div className="flex flex-wrap gap-3 items-end mb-4">
       <div className="mr-auto">
-        <h1 className="text-2xl font-bold text-white">{text}</h1>
+        <h1 className="text-2xl font-bold text-white">{title}</h1>
         <p className="text-gray-400 text-sm">{description}</p>
       </div>
       <div className="relative flex items-center">
@@ -31,7 +33,10 @@ const Title = ({
           type="text"
           placeholder="Search here....."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            onSearch?.(searchQuery);
+          }}
           className="bg-[#212428] border border-[#333] rounded-full px-10 py-2 text-white w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-[#FF343F]/30 transition-all"
           aria-label="Search dashboard"
         />
@@ -40,6 +45,7 @@ const Title = ({
           size={18}
         />
       </div>
+
       <div className="flex flex-col sm:flex-row gap-3 mt-4 md:mt-0 w-full sm:w-auto">
         <div className="flex gap-3">
           <motion.button

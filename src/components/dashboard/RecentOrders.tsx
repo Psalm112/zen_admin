@@ -96,9 +96,9 @@ const RecentOrders = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.5 }}
-      className="bg-[#1e2024] rounded-lg p-5 shadow-md"
+      className="bg-[#1e2024] rounded-lg py-5 shadow-md"
     >
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-4 px-5">
         <h3 className="text-lg font-medium text-white">Recent orders</h3>
         <div className="relative">
           <motion.button
@@ -158,10 +158,10 @@ const RecentOrders = () => {
       </div>
 
       <div className="overflow-x-auto max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-[#333] scrollbar-track-[#1e2024]">
-        <table className="w-full max-md:border-separate max-md:border-spacing-2">
+        <table className="w-full border-collapse">
           <thead className="sticky top-0 bg-[#1e2024] z-10 ">
-            <tr className="text-left text-white text-xs border-b border-[#292B30]">
-              <th className="pb-2">
+            <tr className="text-left text-white text-xs border-b border-[#292B30] px-5">
+              <th className="pb-2 pr-5">
                 <div className="flex items-center gap-2">
                   <label className="relative inline-block h-4 w-4">
                     <input
@@ -178,7 +178,7 @@ const RecentOrders = () => {
                 </div>
               </th>
               <th>
-                <div className="pb-2 flex gap-1 items-center">
+                <div className="pb-2 flex gap-1 items-center max-md:px-2">
                   <PiCalendarBlankFill
                     size={20}
                     className="text-[#AEB9E1] max-md:hidden"
@@ -195,20 +195,22 @@ const RecentOrders = () => {
                   <span>Status</span>
                 </div>
               </th>
-              <th className="pb-2 text-right">Total</th>
+              <th className="pb-2 text-right pr-5 max-md:pl-2">Total</th>
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
+            {orders.map((order, index) => (
               <motion.tr
                 key={order.id}
-                className="border-b border-[#292B30] text-sm"
+                className={`border-b border-[#292B30] text-sm ${
+                  index % 2 !== 1 ? "bg-[#171A1E]" : ""
+                }`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
                 whileHover={{ backgroundColor: "rgba(255,255,255,0.02)" }}
               >
-                <td className="py-4">
+                <td className="py-4 pl-5 ">
                   <div className="flex items-center gap-2">
                     <label className="relative inline-block h-4 w-4">
                       <input
@@ -234,7 +236,7 @@ const RecentOrders = () => {
                   </div>
                 </td>
                 <td
-                  className={`py-4 ${
+                  className={`py-4 max-md:px-2 ${
                     order.status !== "Paid" ? "text-[#AEB9E1]" : "text-gray-400"
                   }`}
                 >
@@ -253,7 +255,7 @@ const RecentOrders = () => {
                   </span>
                 </td>
                 <td
-                  className={`py-4 text-right font-medium ${
+                  className={`py-4 text-right font-medium pr-5 max-md:pl-2 ${
                     order.status !== "Paid" ? "text-[#AEB9E1]" : "text-white"
                   }`}
                 >

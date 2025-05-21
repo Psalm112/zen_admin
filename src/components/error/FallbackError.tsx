@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { replace, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BiErrorAlt } from "react-icons/bi";
 import Container from "../common/Container";

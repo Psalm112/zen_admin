@@ -102,15 +102,15 @@ const PaymentHistory = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.5 }}
-      className="bg-[#1e2024] rounded-lg p-5 shadow-md"
+      className="bg-[#1e2024] rounded-lg py-5 shadow-md"
     >
       <h3 className="text-lg font-medium text-white mb-4">Payment History</h3>
 
       <div className="overflow-x-auto max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-[#333] scrollbar-track-[#1e2024]">
-        <table className="w-full max-md:border-separate max-md:border-spacing-2">
+        <table className="w-full border-collapse">
           <thead className="sticky top-0 bg-[#1e2024] z-10">
-            <tr className="text-left text-white text-xs border-b border-[#292B30]">
-              <th className="pb-2">
+            <tr className="text-left text-white text-xs border-b border-[#292B30] px-5">
+              <th className="pb-2 pl-5">
                 <div className="flex items-center gap-2">
                   <label className="relative inline-block h-4 w-4">
                     <input
@@ -126,7 +126,7 @@ const PaymentHistory = () => {
                   <span>Transaction ID</span>
                 </div>
               </th>
-              <th>
+              <th className="max-md:px-2">
                 <div className="pb-2 flex gap-1 items-center">
                   <PiCurrencyDollarSimpleFill
                     size={20}
@@ -144,7 +144,7 @@ const PaymentHistory = () => {
                   <span>Date</span>
                 </div>
               </th>
-              <th>
+              <th className="max-md:px-2">
                 <div className="pb-2 flex gap-1 items-center">
                   <IoIosCheckbox
                     size={20}
@@ -153,7 +153,7 @@ const PaymentHistory = () => {
                   <span>Status</span>
                 </div>
               </th>
-              <th className="pb-2 text-right">
+              <th className="pb-2 text-right pr-5">
                 <div className="flex gap-1 items-center justify-end">
                   <BsFillFuelPumpFill
                     size={20}
@@ -168,13 +168,15 @@ const PaymentHistory = () => {
             {transactions.map((transaction, index) => (
               <motion.tr
                 key={`${transaction.id}-${index}`}
-                className="border-b border-[#292B30] text-sm"
+                className={`border-b border-[#292B30] text-sm  ${
+                  index % 2 !== 1 ? "bg-[#171A1E]" : ""
+                }`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
                 whileHover={{ backgroundColor: "rgba(255,255,255,0.02)" }}
               >
-                <td className="py-4">
+                <td className="py-4 pl-5">
                   <div className="flex items-center gap-2">
                     <label className="relative inline-block h-4 w-4">
                       <input
@@ -190,9 +192,11 @@ const PaymentHistory = () => {
                     <span className="text-white">{transaction.id}</span>
                   </div>
                 </td>
-                <td className="py-4 text-white">{transaction.amount}</td>
+                <td className="py-4 text-white max-md:px-2">
+                  {transaction.amount}
+                </td>
                 <td className="py-4 text-[#AEB9E1]">{transaction.date}</td>
-                <td className="py-4">
+                <td className="py-4 max-md:px-2">
                   <span
                     className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${
                       transaction.status === "Success"
@@ -204,7 +208,7 @@ const PaymentHistory = () => {
                     {transaction.status}
                   </span>
                 </td>
-                <td className="py-4 text-right text-white">
+                <td className="py-4 text-right text-white pr-5">
                   {transaction.gasFee}
                 </td>
               </motion.tr>

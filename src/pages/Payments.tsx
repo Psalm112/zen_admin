@@ -42,7 +42,7 @@ const Payments = () => {
               className="w-full"
             >
               <Title
-                text="Payment"
+                title="Payment"
                 description="Withdraw profits and manage the payment contract address. Ensure gas fees are covered for smooth transactions."
                 // handleExportCSV={handleExportCSV}
                 // handleDownloadReport={handleDownloadReport}
