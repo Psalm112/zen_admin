@@ -222,7 +222,6 @@ const Disputes = () => {
                         </th>
                         <th className="py-3 px-4">
                           <span className="text-sm text-white">
-                            {" "}
                             <div className="pb-2 flex gap-1 items-center">
                               <FaUser
                                 size={20}

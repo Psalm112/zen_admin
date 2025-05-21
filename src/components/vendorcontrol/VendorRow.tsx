@@ -1,35 +1,31 @@
 import { motion } from "framer-motion";
-import { FaFolderOpen } from "react-icons/fa6";
 import { FiEye } from "react-icons/fi";
+import { FaFolderOpen } from "react-icons/fa6";
 
-interface ControlRowProps {
-  control: {
+interface VendorRowProps {
+  vendor: {
     id: string;
-    user: {
-      name: string;
-      email: string;
-    };
-    date: string;
-    status: "Delivered" | "Escalated" | "Resolved" | "Open";
-    vendor: string;
-    reason: string;
+    name: string;
+    storeName: string;
+    joinedOn: string;
+    status: "Active" | "Blocked" | "Pending";
+    email: string;
+    products: number;
     selected: boolean;
   };
   onSelect: (id: string) => void;
   className?: String;
 }
 
-const ControlRow = ({ control, onSelect, className }: ControlRowProps) => {
-  // Get status badge style even:bg-[#171A1E]s
+const VendorRow = ({ vendor, onSelect, className }: VendorRowProps) => {
+  // Get status badge style
   const getStatusStyles = (status: string) => {
     switch (status) {
-      case "Delivered":
+      case "Active":
         return "bg-green-900/30 text-green-500 border border-green-500/30";
-      case "Escalated":
+      case "Blocked":
         return "bg-red-900/30 text-red-500 border border-red-500/30";
-      case "Resolved":
-        return "bg-green-900/30 text-green-500 border border-green-500/30";
-      case "Open":
+      case "Pending":
         return "bg-yellow-900/30 text-yellow-500 border border-yellow-500/30";
       default:
         return "bg-gray-900/30 text-gray-500 border border-gray-500/30";
@@ -49,42 +45,39 @@ const ControlRow = ({ control, onSelect, className }: ControlRowProps) => {
           <label className="relative inline-block h-4 w-4">
             <input
               type="checkbox"
-              checked={control.selected}
-              onChange={() => onSelect(control.id)}
+              checked={vendor.selected}
+              onChange={() => onSelect(vendor.id)}
               className="peer absolute h-4 w-4 appearance-none rounded-sm bg-[#292B30] border border-[#AEB9E1] checked:bg-[#FF343F] checked:border-[#FF343F] focus:ring-[#FF343F] cursor-pointer"
-              aria-label={`Select control ${control.id}`}
+              aria-label={`Select vendor ${vendor.id}`}
             />
             <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-white text-xs peer-checked:opacity-100 opacity-0">
               ✓
             </span>
           </label>
-          <span className="text-white font-medium">{control.id}</span>
+          <span className="text-white font-medium">{vendor.name}</span>
         </div>
       </td>
       <td className="py-4 px-4">
-        <div>
-          <p className="text-white text-sm">{control.user.name}</p>
-          <p className="text-[#AEB9E1] text-xs">{control.user.email}</p>
-        </div>
+        <span className="text-white text-sm">{vendor.storeName}</span>
       </td>
       <td className="py-4 px-4">
-        <span className="text-white text-sm">{control.date}</span>
+        <span className="text-white text-sm">{vendor.joinedOn}</span>
       </td>
       <td className="py-4 px-4">
         <span
           className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${getStatusStyles(
-            control.status
+            vendor.status
           )}`}
         >
           <span className="text-lg leading-3">•</span>
-          {control.status}
+          {vendor.status}
         </span>
       </td>
       <td className="py-4 px-4">
-        <span className="text-white text-sm">{control.vendor}</span>
+        <span className="text-[#AEB9E1] text-sm">{vendor.email}</span>
       </td>
-      <td className="py-4 px-4">
-        <span className="text-[#AEB9E1] text-sm">{control.reason}</span>
+      <td className="py-4 px-4 ">
+        <span className="text-white text-sm">{vendor.products}</span>
       </td>
       <td className="py-4 px-4">
         <div className="flex items-center gap-2">
@@ -92,7 +85,7 @@ const ControlRow = ({ control, onSelect, className }: ControlRowProps) => {
             className="p-1.5 bg-[#292B30] rounded-md text-[#AEB9E1] hover:text-white"
             whileHover={{ scale: 1.05, backgroundColor: "#343539" }}
             whileTap={{ scale: 0.95 }}
-            aria-label="View control details"
+            aria-label="View vendor details"
           >
             <FiEye size={18} />
           </motion.button>
@@ -100,7 +93,7 @@ const ControlRow = ({ control, onSelect, className }: ControlRowProps) => {
             className="p-1.5 bg-[#292B30] rounded-md text-[#AEB9E1] hover:text-white"
             whileHover={{ scale: 1.05, backgroundColor: "#343539" }}
             whileTap={{ scale: 0.95 }}
-            aria-label="Message regarding control"
+            aria-label="Message vendor"
           >
             <FaFolderOpen size={18} />
           </motion.button>
@@ -110,4 +103,4 @@ const ControlRow = ({ control, onSelect, className }: ControlRowProps) => {
   );
 };
 
-export default ControlRow;
+export default VendorRow;
