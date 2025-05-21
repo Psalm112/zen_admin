@@ -102,14 +102,20 @@ const VendorControl = () => {
   const handleSelectAll = () => {
     const newSelectAll = !selectAll;
     setSelectAll(newSelectAll);
-    setVendors(
-      vendors.map((vendor) => ({
+
+    const updatedVendors = vendors.map((vendor) => ({
+      ...vendor,
+      selected: newSelectAll,
+    }));
+
+    setVendors(updatedVendors);
+    setFilteredVendors(
+      filteredVendors.map((vendor) => ({
         ...vendor,
         selected: newSelectAll,
       }))
     );
   };
-
   // Handle individual vendor selection
   const handleSelectVendor = (id: string) => {
     const updatedVendors = vendors.map((vendor) =>
@@ -117,6 +123,11 @@ const VendorControl = () => {
     );
 
     setVendors(updatedVendors);
+    setFilteredVendors(
+      filteredVendors.map((vendor) =>
+        vendor.id === id ? { ...vendor, selected: !vendor.selected } : vendor
+      )
+    );
     setSelectAll(updatedVendors.every((vendor) => vendor.selected));
   };
 

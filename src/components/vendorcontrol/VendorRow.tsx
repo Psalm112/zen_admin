@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FiEye } from "react-icons/fi";
 import { FaFolderOpen } from "react-icons/fa6";
+import { CgCheck } from "react-icons/cg";
 
 interface VendorRowProps {
   vendor: {
@@ -51,7 +52,7 @@ const VendorRow = ({ vendor, onSelect, className }: VendorRowProps) => {
               aria-label={`Select vendor ${vendor.id}`}
             />
             <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-white text-xs peer-checked:opacity-100 opacity-0">
-              ✓
+              <CgCheck />
             </span>
           </label>
           <span className="text-white font-medium">{vendor.name}</span>

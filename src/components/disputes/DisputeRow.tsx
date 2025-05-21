@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { CgCheck } from "react-icons/cg";
 import { FaFolderOpen } from "react-icons/fa6";
 import { FiEye } from "react-icons/fi";
 
@@ -55,7 +56,7 @@ const DisputeRow = ({ dispute, onSelect, className }: DisputeRowProps) => {
               aria-label={`Select dispute ${dispute.id}`}
             />
             <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-white text-xs peer-checked:opacity-100 opacity-0">
-              ✓
+              <CgCheck />
             </span>
           </label>
           <span className="text-white font-medium">{dispute.id}</span>

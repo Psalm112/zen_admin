@@ -118,8 +118,15 @@ const Disputes = () => {
   const handleSelectAll = () => {
     const newSelectAll = !selectAll;
     setSelectAll(newSelectAll);
-    setDisputes(
-      disputes.map((dispute) => ({
+
+    const updatedDisputes = disputes.map((dispute) => ({
+      ...dispute,
+      selected: newSelectAll,
+    }));
+
+    setDisputes(updatedDisputes);
+    setFilteredDisputes(
+      filteredDisputes.map((dispute) => ({
         ...dispute,
         selected: newSelectAll,
       }))
@@ -133,6 +140,13 @@ const Disputes = () => {
     );
 
     setDisputes(updatedDisputes);
+    setFilteredDisputes(
+      filteredDisputes.map((dispute) =>
+        dispute.id === id
+          ? { ...dispute, selected: !dispute.selected }
+          : dispute
+      )
+    );
     setSelectAll(updatedDisputes.every((dispute) => dispute.selected));
   };
 
