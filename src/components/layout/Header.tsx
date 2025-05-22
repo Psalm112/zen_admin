@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import Container from "../common/Container";
-import { Avatar, Logo } from "../../pages";
+import { Avatar, FullLogo } from "../../pages";
 import { IoCashOutline, IoChevronDown } from "react-icons/io5";
 import { GrHomeRounded } from "react-icons/gr";
 import { CgController } from "react-icons/cg";
@@ -58,7 +58,7 @@ const Header = () => {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <img
-              src={Logo}
+              src={FullLogo}
               className="w-full object-cover object-[25%_25%]"
               alt="Company logo"
             />

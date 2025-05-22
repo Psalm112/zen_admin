@@ -161,7 +161,7 @@ const RecentOrders = () => {
         <table className="w-full border-collapse">
           <thead className="sticky top-0 bg-[#1e2024] z-10 ">
             <tr className="text-left text-white text-xs border-b border-[#292B30] px-5">
-              <th className="pb-2 pr-5">
+              <th className="pb-2 pl-5">
                 <div className="flex items-center gap-2">
                   <label className="relative inline-block h-4 w-4">
                     <input

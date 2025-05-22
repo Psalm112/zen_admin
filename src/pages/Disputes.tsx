@@ -209,7 +209,7 @@ const Disputes = () => {
                 transition={{ duration: 0.4 }}
                 className="bg-[#1e2024] rounded-lg py-5 shadow-md"
               >
-                <h2 className="text-lg font-medium text-white mb-4">
+                <h2 className="text-lg font-medium text-white mb-4 pl-4">
                   Disputes
                 </h2>
 
